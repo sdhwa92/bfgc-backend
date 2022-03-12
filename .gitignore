@@ -11,6 +11,8 @@
 # Ignore files related to API keys
 .env
 
+# Dev keys
+config/dev.js
 
 # Ignore vscode settings
 .vscode
