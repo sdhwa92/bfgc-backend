@@ -1,0 +1,16 @@
+# Ignore Mac system fiels
+.DS_store
+
+
+# Ignore node_modules for each apps
+**/**/node_modules
+
+# Ignore all text files
+*.txt
+
+# Ignore files related to API keys
+.env
+
+
+# Ignore vscode settings
+.vscode
