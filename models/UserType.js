@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const userTypeSchema = new Schema({
   typeName: String,
+  Permissions: [{ type: String }],
 });
 
-mongoose.model("userTypes", userTypeSchema);
+module.exports = userTypeSchema;
