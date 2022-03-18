@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const userTypeSchema = new Schema({
-  typeName: String,
+const roleSchema = new Schema({
+  roleName: String,
   Permissions: [{ type: String }],
 });
 
-module.exports = userTypeSchema;
+module.exports = roleSchema;
