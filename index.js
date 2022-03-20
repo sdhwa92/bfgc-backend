@@ -38,6 +38,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+require("./routes/authRoutes")(app);
+
 // simple route for testing
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to BFGC API application." });
