@@ -12,16 +12,26 @@ require("./models/Template");
 require("./models/Service");
 
 // Execute the passport js file
-require("./services/passport");
+require("./services/passport")(passport);
 
 mongoose.connect(keys.mongoURI);
 
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:8080",
+  origin: "http://localhost:3000",
+  optionsSuccessStates: 200,
+  // By setting credentials to true, this will make the response include an additial
+  // Access-Control-Allow-Credentials header.
+  // The Access-Control-Allow-Credentials response header tells browsers whether to expose the
+  // response to the frontend JavaScript code when the request's crendential mode is include.
+  // When a request's credentials mode (Request.credentials) is include,
+  // browsers will only expose the response to the frontend JavaScript code
+  // if the Access-Control-Allow-Credentials value is true.
+  credentials: true,
 };
 
+app.use(cors(corsOptions));
 // parse request of content-type - application/json
 app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -38,7 +48,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./routes/authRoutes")(app);
+require("./routes/authRoutes")(app, passport);
 
 // simple route for testing
 app.get("/", (req, res) => {
