@@ -34,8 +34,10 @@ const verifyToken = (req, res, next) => {
       }
     );
   } else {
-    req.user = "undefined";
-    next();
+    req.user = undefined;
+    return res.status(403).send({
+      message: "Invalid JWT token",
+    });
   }
 };
 

@@ -49,6 +49,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes")(app, passport);
+require("./routes/templateRoutes")(app);
 
 // simple route for testing
 app.get("/", (req, res) => {
